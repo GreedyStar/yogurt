@@ -1,0 +1,19 @@
+server:
+  port: 8800
+mybatis:
+  mapper-locations: classpath:mappers/*Mapper.xml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health
+feign:
+  hystrix:
+    enabled: true
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://admin:admin123@127.0.0.1:8001/eureka/
+#role-ms:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

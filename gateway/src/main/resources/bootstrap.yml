@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      profile: dev
+      label: master
+#      uri: http://localhost:8010/   # 在不将config-server注册到eureka-server时需要用到
+      discovery:
+        enabled: true
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin123@127.0.0.1:8000/eureka/

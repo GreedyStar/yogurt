@@ -1,0 +1,9 @@
+server:
+  port: 8801
+mybatis:
+  mapper-locations: classpath:mappers/*Mapper.xml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health

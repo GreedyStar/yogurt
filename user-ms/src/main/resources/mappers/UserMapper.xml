@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greedystar.yogurt.userms.dao.UserDao">
+
+    <resultMap id="userResultMap" type="com.greedystar.yogurt.userms.entity.User">
+        <id column="id" property="id"/> 
+        <result column="code" property="code"/> 
+        <result column="username" property="username"/> 
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <sql id="userColumns">
+        user.id AS "id",
+        user.code AS "code",
+        user.username AS "username",
+        user.password AS "password"
+    </sql>
+
+    <sql id="userJoins">
+        
+    </sql>
+
+    <select id="get" resultMap="userResultMap">
+        SELECT
+        <include refid="userColumns" />
+        FROM user <include refid="userJoins" />
+        <where>
+        user.id = #{id}
+        </where>
+    </select>
+
+    <select id="findList" resultMap="userResultMap">
+        SELECT
+        <include refid="userColumns" />
+        FROM user <include refid="userJoins" />
+        <where>
+        </where>
+    </select>
+
+    <select id="findAllList" resultMap="userResultMap">
+        SELECT
+        <include refid="userColumns" />
+        FROM user <include refid="userJoins" />
+        <where>
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO user(
+            id,
+            code,
+            username,
+            password
+        )
+        VALUES (
+            #{id},
+            #{code},
+            #{username},
+            #{password}
+        )
+    </insert>
+
+    <insert id="insertBatch">
+        INSERT INTO user(
+            id,
+            code,
+            username,
+            password
+        )
+        VALUES
+        <foreach collection ="list" item="user" separator =",">
+        (
+            #{user.id},
+            #{user.code},
+            #{user.username},
+            #{user.password}
+        )
+        </foreach>
+    </insert>
+
+    <update id="update">
+        UPDATE user SET
+        id = #{id},
+        code = #{code},
+        username = #{username},
+        password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        DELETE FROM user
+        WHERE id = #{id}
+    </update>
+
+</mapper>

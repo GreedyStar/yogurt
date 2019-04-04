@@ -1,0 +1,13 @@
+db:
+  url: jdbc:mysql://localhost:3306/yogurt-role
+  username: root
+  password:
+author: GreedyStar
+packageName: com.greedystar.yogurt.rolems
+path:
+  controller: web
+  service: service.impl
+  interf: service
+  dao: dao
+  entity: entity
+  mapper: mappers

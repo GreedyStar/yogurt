@@ -1,0 +1,15 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: config-server
+  cloud:
+      config:
+        server:
+          git:
+            uri: git@github.com:GreedyStar/yogurt-config.git
+        label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin123@127.0.0.1:8000/eureka/
